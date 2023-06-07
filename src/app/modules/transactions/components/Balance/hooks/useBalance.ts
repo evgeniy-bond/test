@@ -1,4 +1,4 @@
-import { Balance, Transaction } from '@ankr.com/ankr.js';
+import { Balance } from '@ankr.com/ankr.js';
 import { useEffect, useState } from 'react';
 
 import provider from '@/app/utils/provider';
