@@ -36,7 +36,7 @@ const waitForTransaction = async (blockchain: Blockchain, txId: string) => {
 
 export const useTransactionDetails = (blockchain: Blockchain, txId = '') => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<unknown>();
+  const [error, setError] = useState<Error>();
   const [data, setData] = useState<Transaction | undefined>();
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export const useTransactionDetails = (blockchain: Blockchain, txId = '') => {
 
         setData(transaction);
       } catch (error) {
-        setError(error);
+        setError(error as Error);
       }
 
       setIsLoading(false);

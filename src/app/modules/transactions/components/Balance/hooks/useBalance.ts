@@ -13,7 +13,7 @@ const getBalance = (walletAddress: string) => {
 
 export const useBalance = (addressId?: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<unknown>();
+  const [error, setError] = useState<Error>();
   const [data, setData] = useState<Balance[]>();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const useBalance = (addressId?: string) => {
 
         setData(assets);
       } catch (error) {
-        setError(error);
+        setError(error as Error);
       }
 
       setIsLoading(false);

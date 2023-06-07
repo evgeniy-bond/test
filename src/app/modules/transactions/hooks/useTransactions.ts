@@ -13,7 +13,7 @@ const getTransactions = (walletAddress: string) => {
 
 export const useTransactions = (addressId?: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<unknown>();
+  const [error, setError] = useState<Error>();
   const [data, setData] = useState<Transaction[]>();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const useTransactions = (addressId?: string) => {
 
         setData(transactions);
       } catch (error) {
-        setError(error);
+        setError(error as Error);
       }
 
       setIsLoading(false);

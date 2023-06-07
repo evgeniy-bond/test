@@ -23,8 +23,8 @@ export default function Transactions({ addressId }: TransactionsProps) {
       return <Loader />;
     }
 
-    if (Boolean(error)) {
-      return <ErrorBlock />;
+    if (error) {
+      return <ErrorBlock message={error.message} />;
     }
 
     return <TransactionsTable transactions={formattedData} />;

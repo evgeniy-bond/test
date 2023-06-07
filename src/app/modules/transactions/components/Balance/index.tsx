@@ -21,8 +21,8 @@ export default function Balance({ addressId }: BalanceProps) {
       return <Loader />;
     }
 
-    if (Boolean(error)) {
-      return <ErrorBlock />;
+    if (error) {
+      return <ErrorBlock message={error?.message} />;
     }
 
     if (!data) {
