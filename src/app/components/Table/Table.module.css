@@ -1,0 +1,29 @@
+.root {
+  max-width: 1200px;
+  min-width: 800px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.cell {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+@media screen and (max-width: 940px) {
+  .root {
+    overflow-x: scroll;
+  }
+}

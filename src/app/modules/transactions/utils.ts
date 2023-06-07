@@ -1,9 +1,19 @@
-import provider from "@/app/utils/provider";
+import { Transaction } from '@ankr.com/ankr.js';
+import BigNumber from 'bignumber.js';
 
-// Get token balances of address with USD prices among multiple chains
-const balances = async () => {
-    return await provider.getAccountBalance({
-        blockchain: ['bsc', 'eth', 'polygon', 'avalanche'],
-        walletAddress: '0xfa9019df60d3c710d7d583b2d69e18d412257617',
-    });
+export interface FormattedTransaction extends Transaction {
+  timestampAsBigNumber: BigNumber;
+  valueAsBigNumber: BigNumber;
+}
+
+export const formatData = (
+  transactions?: Transaction[],
+): FormattedTransaction[] => {
+  if (!transactions) return [];
+
+  return transactions?.map(item => ({
+    ...item,
+    timestampAsBigNumber: new BigNumber(item.timestamp),
+    valueAsBigNumber: new BigNumber(item.value),
+  }));
 };
