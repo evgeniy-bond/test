@@ -1,14 +1,14 @@
-import { Balance } from '@ankr.com/ankr.js';
+import { Balance, GetAccountBalanceReply } from '@ankr.com/ankr.js';
 import { useEffect, useState } from 'react';
 
-import provider from '@/app/utils/provider';
-import { SupportedBlockchains } from '@/app/constants';
+import http from '@/app/utils/http';
 
-const getBalance = (walletAddress = '') => {
-  return provider.getAccountBalance({
-    blockchain: [SupportedBlockchains.ETH, SupportedBlockchains.POLYGON],
-    walletAddress,
+const getBalance = async (address = '') => {
+  const { data } = await http.get<GetAccountBalanceReply>('/api/balance', {
+    params: { address },
   });
+
+  return data;
 };
 
 export const useBalance = (addressId?: string) => {
