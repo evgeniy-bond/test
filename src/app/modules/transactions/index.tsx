@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from 'react';
 
 import ErrorBlock from '@/app/components/ErrorBlock';

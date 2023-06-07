@@ -1,3 +1,5 @@
+'use client';
+
 import { Blockchain } from '@ankr.com/ankr.js';
 import { useMemo } from 'react';
 
