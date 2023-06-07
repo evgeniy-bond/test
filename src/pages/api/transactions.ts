@@ -5,6 +5,7 @@ import provider from '@/app/utils/provider';
 
 const request = async (req: NextApiRequest, res: NextApiResponse) => {
   const { address } = req.query;
+  console.log(address);
 
   try {
     const response = await provider.getTransactionsByAddress({
@@ -14,6 +15,8 @@ const request = async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json(response);
   } catch (error: any) {
+    console.log(error);
+
     res.status(500).json({ error: error.message });
   }
 };

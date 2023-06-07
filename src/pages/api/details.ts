@@ -14,6 +14,8 @@ const request = async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json(response);
   } catch (error: any) {
+    console.log(error);
+
     res.status(500).json({ error: error.message });
   }
 };
