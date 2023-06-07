@@ -1,13 +1,17 @@
-import { Blockchain, Transaction } from '@ankr.com/ankr.js';
+import { Blockchain, GetTransactionsByHashReply, Transaction } from '@ankr.com/ankr.js';
 import { useEffect, useState } from 'react';
 
-import provider from '@/app/utils/provider';
+import http from '@/app/utils/http';
 
-const getDetails = (blockchain: Blockchain, txId: string) => {
-  return provider.getTransactionsByHash({
-    blockchain: [blockchain],
-    transactionHash: txId,
-  });
+const getDetails = async (blockchain: Blockchain, txId: string) => {
+  const { data } = await http.get<GetTransactionsByHashReply>(
+    '/api/details',
+    {
+      params: { blockchain, txId },
+    },
+  );
+
+  return data;
 };
 
 export const ETH_BLOCK_TIME = 10_000;

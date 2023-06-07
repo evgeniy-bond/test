@@ -28,8 +28,6 @@ export const getRenderedValues = (
   const link = getExplorerLink(blockchain, txId);
   const { value, timestamp, status, gasUsed } = transaction;
 
-  console.log(formatValueToNumber(gasUsed || ''));
-
   return {
     link,
     date: formatTimestampToDate(timestamp),

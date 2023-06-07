@@ -1,14 +1,17 @@
-import { Transaction } from '@ankr.com/ankr.js';
+import { GetTransactionsByAddressReply, Transaction } from '@ankr.com/ankr.js';
 import { useEffect, useState } from 'react';
 
-import provider from '@/app/utils/provider';
-import { SupportedBlockchains } from '@/app/constants';
+import http from '@/app/utils/http';
 
-const getTransactions = (walletAddress = '') => {
-  return provider.getTransactionsByAddress({
-    blockchain: [SupportedBlockchains.ETH, SupportedBlockchains.POLYGON],
-    address: [walletAddress],
-  });
+const getTransactions = async (address = '') => {
+  const { data } = await http.get<GetTransactionsByAddressReply>(
+    '/api/transactions',
+    {
+      params: { address },
+    },
+  );
+
+  return data;
 };
 
 export const useTransactions = (addressId?: string) => {
