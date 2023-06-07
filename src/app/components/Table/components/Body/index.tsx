@@ -39,7 +39,7 @@ export default function Body<T>({ data, columns }: BodyProps<T>) {
                   style={{ ...columnsStyles, width, minWidth: width }}
                   className={styles.cell}
                 >
-                  {row[String(name)]}
+                  {(row as any)[nameAsString]}
                 </div>
               );
             })}

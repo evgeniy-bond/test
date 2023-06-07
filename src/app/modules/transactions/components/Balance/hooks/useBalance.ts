@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import provider from '@/app/utils/provider';
 import { SupportedBlockchains } from '@/app/constants';
 
-const getBalance = (walletAddress: string) => {
+const getBalance = (walletAddress = '') => {
   return provider.getAccountBalance({
     blockchain: [SupportedBlockchains.ETH, SupportedBlockchains.POLYGON],
     walletAddress,

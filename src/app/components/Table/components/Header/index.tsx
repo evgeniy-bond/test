@@ -4,7 +4,7 @@ import styles from '../../Table.module.css';
 
 export interface Column<T> {
   header: ReactNode;
-  name: string;
+  name: keyof T | string;
   render?: (row: T, rowIndex: number) => ReactNode;
   width?: string;
   styles?: Record<string, string>;
