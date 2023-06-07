@@ -1,5 +1,3 @@
-'use client';
-
 import { Blockchain } from '@ankr.com/ankr.js';
 import { useMemo } from 'react';
 
@@ -10,7 +8,6 @@ import { useValidateBlockchain } from '@/app/hooks/useValidateBlockchain';
 import ErrorBlock from '@/app/components/ErrorBlock';
 import Loader from '@/app/components/Loader';
 import Balance from '../transactions/components/Balance';
-import styles from './TransactionDetails.module.css';
 
 interface TransactionDetailsProps {
   addressId?: string;
