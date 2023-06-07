@@ -7,6 +7,7 @@ import { useTransactions } from './hooks/useTransactions';
 import TransactionsTable from './components/TransactionsTable';
 import { formatData } from './utils';
 import Balance from './components/Balance';
+import styles from './Transactions.module.css';
 
 interface TransactionsProps {
   addressId?: string;
@@ -31,7 +32,7 @@ export default function Transactions({ addressId }: TransactionsProps) {
   }, [isLoading, error, formattedData]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className={`p-10 max-w-7xl ${styles.main}`}>
       <Balance addressId={addressId} />
       {content}
     </main>

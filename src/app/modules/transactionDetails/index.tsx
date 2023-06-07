@@ -46,7 +46,7 @@ export default function TransactionDetails({
   }, [isLoading, data, error, blockchain, txId]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="p-10 max-w-7xl">
       <Balance addressId={addressId} />
       {content}
     </main>
