@@ -2,11 +2,13 @@ import { Blockchain } from '@ankr.com/ankr.js';
 import { useMemo } from 'react';
 
 import { useTransactionDetails } from './hooks/useTransactionDetails';
-import Transaction from './components/Transaction';
+import TransactionInfo from './components/TransactionInfo';
 import { useValidateAddress } from '@/app/hooks/useValidateAddress';
 import { useValidateBlockchain } from '@/app/hooks/useValidateBlockchain';
 import ErrorBlock from '@/app/components/ErrorBlock';
 import Loader from '@/app/components/Loader';
+import Balance from '../transactions/components/Balance';
+import styles from './TransactionDetails.module.css';
 
 interface TransactionDetailsProps {
   addressId?: string;
@@ -25,26 +27,29 @@ export default function TransactionDetails({
   const { isLoading, error, data } = useTransactionDetails(blockchain, txId);
 
   const content = useMemo(() => {
-    const transaction = data?.[0];
-
     if (isLoading) {
       return <Loader />;
     }
 
     if (Boolean(error)) {
-      return <ErrorBlock />;
+      return <ErrorBlock  />;
     }
 
-    if (!transaction) {
-      return <div>No such transaction</div>;
+    if (data) {
+      return (
+        <TransactionInfo
+          txId={txId}
+          blockchain={blockchain}
+          transaction={data}
+        />
+      );
     }
-
-    return <Transaction txId={txId} blockchain={blockchain} />;
   }, [isLoading, data, error, blockchain, txId]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>Address {addressId}</div>
+      <Balance addressId={addressId} />
+      <div className={styles.transaction}>Transaction {txId}</div>
       {content}
     </main>
   );

@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  margin-top: 20px;
+}
+
+
+.info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info div {
+  padding: 10px;
+}
+
+.link {
+  padding: 10px;
+}
