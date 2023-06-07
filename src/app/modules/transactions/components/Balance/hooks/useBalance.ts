@@ -1,20 +1,20 @@
-import { Transaction } from '@ankr.com/ankr.js';
+import { Balance, Transaction } from '@ankr.com/ankr.js';
 import { useEffect, useState } from 'react';
 
 import provider from '@/app/utils/provider';
 import { SupportedBlockchains } from '@/app/constants';
 
-const getTransactions = (walletAddress: string) => {
-  return provider.getTransactionsByAddress({
+const getBalance = (walletAddress: string) => {
+  return provider.getAccountBalance({
     blockchain: [SupportedBlockchains.ETH, SupportedBlockchains.POLYGON],
-    address: [walletAddress],
+    walletAddress,
   });
 };
 
-export const useTransactions = (addressId?: string) => {
+export const useBalance = (addressId?: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<unknown>();
-  const [data, setData] = useState<Transaction[]>();
+  const [data, setData] = useState<Balance[]>();
 
   useEffect(() => {
     const getData = async () => {
@@ -23,9 +23,9 @@ export const useTransactions = (addressId?: string) => {
       setData(undefined);
 
       try {
-        const { transactions } = await getTransactions(addressId);
+        const { assets } = await getBalance(addressId);
 
-        setData(transactions);
+        setData(assets);
       } catch (error) {
         setError(error);
       }

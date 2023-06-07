@@ -1,0 +1,14 @@
+.root {
+  max-width: 250px;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tokenName {
+    margin-right: 10px;
+}
