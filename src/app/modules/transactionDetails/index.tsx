@@ -51,7 +51,6 @@ export default function TransactionDetails({
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Balance addressId={addressId} />
-      <div className={styles.transaction}>Transaction {txId}</div>
       {content}
     </main>
   );

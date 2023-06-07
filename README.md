@@ -4,5 +4,5 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 There're 2 pages:
 
-# https://test-fjlx.vercel.app/address/:address
-# https://test-fjlx.vercel.app/address/:address/:blockchain/:txId
+# /address/:address
+# /address/:address/:blockchain/:txId

@@ -6,6 +6,11 @@
   margin-top: 20px;
 }
 
+.transaction {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 .info {
   margin-top: 20px;
@@ -14,9 +19,9 @@
 }
 
 .info div {
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .link {
-  padding: 10px;
+  padding: 10px 0;
 }

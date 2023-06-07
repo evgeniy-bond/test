@@ -1,18 +1,25 @@
 .root {
   max-width: 1200px;
   min-width: 800px;
+
+  border: 1px solid grey;
+  border-radius: 16px;
+  margin-top: 20px;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+
+  border-bottom: 1px solid grey;
 }
 
 .head {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  border-bottom: 1px solid grey;
 }
 
 .cell {
